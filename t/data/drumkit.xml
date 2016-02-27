@@ -125,7 +125,7 @@
         </instrument>
         <instrument>
             <id>3</id>
-            <name></name>
+            <name>Something</name>
             <volume>0.88</volume>
             <isMuted>false</isMuted>
             <isLocked>false</isLocked>
@@ -551,7 +551,7 @@
         </instrument>
         <instrument>
             <id>14</id>
-            <name></name>
+            <name>Something Else</name>
             <volume>0.8</volume>
             <isMuted>false</isMuted>
             <isLocked>false</isLocked>
@@ -570,7 +570,7 @@
         </instrument>
         <instrument>
             <id>15</id>
-            <name></name>
+            <name>Why</name>
             <volume>0.77</volume>
             <isMuted>false</isMuted>
             <isLocked>false</isLocked>
