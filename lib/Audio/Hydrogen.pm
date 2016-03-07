@@ -1,8 +1,26 @@
 use v6;
 
+=begin pod
+
+=head1 NAME
+
+Audio::Hydrogen - work with Hydrogen songs and drumkits
+
+=head1 SYNOPSIS
+
+=begin code
+
+=end code
+
+=head1 DESCRIPTION
+
+
+=end pod
+
 use Audio::Hydrogen::Drumkit;
 use Audio::Hydrogen::Song;
-class Audio::Hydrogen {
+
+class Audio::Hydrogen:ver<0.0.1>:auth<github:jonathanstowe> {
 
     class DrumkitInfo {
         has Str $.name;
