@@ -9,6 +9,12 @@ class Audio::Hydrogen::Drumkit does XML::Class[xml-element => 'drumkit_info'] {
    has Str                         $.author      is xml-element;
    has Str                         $.info        is xml-element;
    has Audio::Hydrogen::Instrument @.instruments is xml-container('instrumentList');
+
+   method make-absolute(IO::Path $path) {
+       for @!instruments -> $instrument {
+           $instrument.make-absolute($path);
+       }
+   }
 }
 
 

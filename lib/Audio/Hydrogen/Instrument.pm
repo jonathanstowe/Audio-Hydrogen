@@ -5,6 +5,7 @@ use XML::Class;
 class Audio::Hydrogen::Instrument does XML::Class[xml-element => 'instrument'] {
     has Int  $.id                  is xml-element;
     has Str  $.name                is xml-element;
+    has Str  $.filename            is xml-element;
     has Rat  $.volume              is xml-element;
     has Bool $.is-muted            is xml-element('isMuted') = False;
     has Bool $.is-locked           is xml-element('isLocked') = False;
@@ -22,7 +23,7 @@ class Audio::Hydrogen::Instrument does XML::Class[xml-element => 'instrument'] {
     has      $.exclude             is xml-element;
 
     class Layer does XML::Class[xml-element => 'layer'] {
-        has Str $.filename is xml-element;
+        has Str $.filename is rw is xml-element;
         has Rat $.min      is xml-element;
         has Rat $.max      is xml-element;
         has Int $.gain     is xml-element;
@@ -30,6 +31,18 @@ class Audio::Hydrogen::Instrument does XML::Class[xml-element => 'instrument'] {
     }
 
     has Layer @.layer;
+
+    method make-absolute(IO::Path $path) {
+        if $!filename && !$!filename.IO.is-absolute {
+            $!filename = $path.child($!filename).Str;
+        }
+        for @!layer ->  $layer {
+            if !$layer.filename.IO.is-absolute {
+                my $new-path = $path.child($layer.filename).Str;
+                $layer.filename = $new-path;
+            }
+        }
+    }
 }
 
 
