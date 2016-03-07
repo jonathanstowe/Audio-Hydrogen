@@ -91,26 +91,38 @@ multi MAIN(Str :$kit!, Bool :$list-instruments!) {
     }
 }
 
-multi MAIN(Str :$kit!, Int:D :$slots!, Int:D :$bars = 1, Int:D :$fills) {
+multi MAIN(Str :$kit!, Int:D :$bars = 1, :@part where { $_.elems > 0}) {
     my $dk;
     my $hydrogen = Audio::Hydrogen.new;
 
     if $hydrogen.drumkits.grep({ $_.name eq $kit }).first -> $di {
         my $drumkit = $di.drumkit();
-        my $slot-pos = (192 * $bars) / $slots;
-        my @fills = Euclid.new.compute_bitmap($slots, $fills);
         my $pattern = Audio::Hydrogen::Pattern.new(name => "Pattern 1", size => ($bars * 192));
-        my $pos = 0;
-        my $instrument = 1;
+        my @notes;
 
-        for @fills -> $fill {
-            if $fill {
-                my $position = Int($pos * $slot-pos);
-                my $note = Audio::Hydrogen::Pattern::Note.new(:$position, :$instrument);
-                $pattern.note-list.append($note);
+        for @part -> $part {
+            my ($instrument, $slots, $fills) = $part.split(',',:skip-empty).map({$_.Int});
+            my $slot-pos = (192 * $bars) / $slots;
+            if $instrument.defined && $slots.defined && $fills.defined {
+                my @fills = Euclid.new.compute_bitmap($slots, $fills);
+                my $pos = 0;
+
+                for @fills -> $fill {
+                    if $fill {
+                        my $position = Int($pos * $slot-pos);
+                        my $note = Audio::Hydrogen::Pattern::Note.new(:$position, :$instrument);
+                        @notes.append($note);
+                    }
+                    $pos++;
+                }
             }
-            $pos++;
+            else {
+                say "part should be '<instrument id>,<slots>,<fills>";
+                exit;
+            }
         }
+
+        $pattern.note-list.append: @notes.sort({ $_.position });
 
         my $song = Audio::Hydrogen::Song.new(instruments => $drumkit.instruments);
         $song.patterns.append($pattern);
