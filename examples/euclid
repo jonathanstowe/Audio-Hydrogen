@@ -2,6 +2,42 @@
 
 use v6;
 
+=begin pod
+
+=head1 NAME
+
+euclid - generate drum pattern using the Euclidean algorithm
+
+=head1 SYNOPSIS
+
+  examples/euclid --list-drumkits 
+  examples/euclid --kit=<kit name> --list-instruments 
+  examples/euclid --kit=<kit name> [--bars=<1>] [--file=<Str>] [--part=<$instruments,$slots,$fills> [--part=<...>]...] ... 
+
+
+=head1 DESCRIPTION
+
+This programme allows you to generate Hydrogen patterns using the rhythmic device
+described in http://cgm.cs.mcgill.ca/~godfried/publications/banff.pdf (which is
+incidentally a good read even if you aren't particulary interested in making
+drum patterns.)
+
+The programme generates a Hydrogen song containing a single pattern for one
+or more instruments of the specified number of bars (the default is 1,) using
+the drumkit specified by name.  Each part is specified as a triplet of the
+instrument id number (which can be determined with the C<list-instruments>
+option,) the total number of C<slots> and the number of C<fills> (the explanation
+of these is in the paper linked above,) So for instance something like a Samba
+on the cowbell (instrument 15,) of a TR808909 kit I have, one might do:
+
+    perl6 -Ilib examples/euclid --kit=TR808909 --part=15,16,7
+
+You can specify as many parts as your kit has instruments (which is typically
+a maximum of 32.)
+
+If a file isn't specified then the song is output to STDOUT.
+
+=end pod
 
 # From Björklund via http://cgm.cs.mcgill.ca/~godfried/publications/banff.pdf
 
@@ -91,7 +127,7 @@ multi MAIN(Str :$kit!, Bool :$list-instruments!) {
     }
 }
 
-multi MAIN(Str :$kit!, Int:D :$bars = 1, :@part where { $_.elems > 0}) {
+multi MAIN(Str :$kit!, Int:D :$bars = 1, Str :$file, :$part ) {
     my $dk;
     my $hydrogen = Audio::Hydrogen.new;
 
@@ -100,7 +136,7 @@ multi MAIN(Str :$kit!, Int:D :$bars = 1, :@part where { $_.elems > 0}) {
         my $pattern = Audio::Hydrogen::Pattern.new(name => "Pattern 1", size => ($bars * 192));
         my @notes;
 
-        for @part -> $part {
+        for $part.list -> $part {
             my ($instrument, $slots, $fills) = $part.split(',',:skip-empty).map({$_.Int});
             my $slot-pos = (192 * $bars) / $slots;
             if $instrument.defined && $slots.defined && $fills.defined {
@@ -124,12 +160,21 @@ multi MAIN(Str :$kit!, Int:D :$bars = 1, :@part where { $_.elems > 0}) {
 
         $pattern.note-list.append: @notes.sort({ $_.position });
 
-        my $song = Audio::Hydrogen::Song.new(instruments => $drumkit.instruments);
+        my $song = Audio::Hydrogen::Song.new(instruments => $drumkit.instruments, version => Version.new("0.9.5"));
         $song.patterns.append($pattern);
-        say $song.to-xml;
+        my $out-xml = $song.to-xml;
+
+        if $file.defined {
+            $file.IO.spurt($out-xml);
+        }
+        else {
+            say $out-xml;
+        }
     }
     else {
         say "Can't find drumkit $kit";
         exit;
     }
 }
+
+# vim: expandtab shiftwidth=4 ft=perl6
