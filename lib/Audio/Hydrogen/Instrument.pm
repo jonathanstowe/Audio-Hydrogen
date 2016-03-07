@@ -11,7 +11,7 @@ class Audio::Hydrogen::Instrument does XML::Class[xml-element => 'instrument'] {
     has Bool $.is-locked           is xml-element('isLocked') = False;
     has Rat  $.pan-left            is xml-element('pan_L') = 1.0;
     has Rat  $.pan-right           is xml-element('pan_R') = 1.0;
-    has Rat  $.random-pitch-factor is xml-element('randomPitchFactor') = 0;
+    has Rat  $.random-pitch-factor is xml-element('randomPitchFactor') = 0.0;
     has Int  $.gain                is xml-element = 1;
     has Bool $.filter-active       is xml-element('filterActive') = False;
     has Rat  $.filter-cutoff       is xml-element('filterCutoff');
