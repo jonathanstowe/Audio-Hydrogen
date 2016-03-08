@@ -48,7 +48,7 @@ Or you can install directly with "panda":
 
     # Remote installation
 
-    panda install XML::Class
+    panda install Audio::Hydrogen
 
 I haven't tried this with "zef" but I have no reason to think it
 shouldn't work if you would rather use that.
@@ -65,7 +65,7 @@ do with it.
 
 Suggestions/patches are welcomed via github at
 
-   https://github.com/jonathanstowe/XML-Class
+   https://github.com/jonathanstowe/Audio-Hydrogen
 
 ## Licence
 
