@@ -1,4 +1,4 @@
-#!perl6
+#!raku
 
 use v6;
 
@@ -29,4 +29,4 @@ for $obj.instruments -> $instrument {
 
 
 done-testing;
-# vim: expandtab shiftwidth=4 ft=perl6
+# vim: expandtab shiftwidth=4 ft=raku

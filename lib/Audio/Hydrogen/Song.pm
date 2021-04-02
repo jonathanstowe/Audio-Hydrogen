@@ -172,4 +172,4 @@ class Audio::Hydrogen::Song does XML::Class[xml-element => 'song'] {
 
     has Plugin @.plugins is xml-container('ladspa');
 }
-# vim: expandtab shiftwidth=4 ft=perl6
+# vim: expandtab shiftwidth=4 ft=raku

@@ -2,9 +2,11 @@
 
 Work with Hydrogen songs and drumkits
 
+![Build Status](https://github.com/jonathanstowe/Audio-Hydrogen/workflows/CI/badge.svg)
+
 ## Synopsis
 
-```perl6
+```raku
 
 use Audio::Hydrogen;
 
@@ -14,8 +16,7 @@ for Audio::Hydrogen.new.drumkits -> $dk {
 
 ```
 
-There are also some vaguely useful examples in the [examples](examples)
-directory.
+There are also some vaguely useful examples in the [examples](examples) directory.
 
 ## Description
 
@@ -29,8 +30,7 @@ examples for things that you can do with it.
 
 ## Installation
 
-Assuming you have a working Rakudo Perl 6 installation you should be able to
-install this with *zef* :
+Assuming you have a working Rakudo installation you should be able to install this with *zef* :
 
     # From the source directory
    
@@ -50,7 +50,7 @@ and am quite open to any ideas that could make it more useful.
 I'd also be delighted to hear about anything interesting you
 do with it.
 
-Suggestions/patches are welcomed via github at https://github.com/jonathanstowe/Audio-Hydrogen/issues
+Suggestions/patches are welcomed via [github](https://github.com/jonathanstowe/Audio-Hydrogen/issues)
 
 ## Licence
 
@@ -58,5 +58,4 @@ This is free software.
 
 Please see the [LICENCE](LICENCE) file in the distribution
 
-© Jonathan Stowe 2016 - 2019
-
+© Jonathan Stowe 2016 - 2021

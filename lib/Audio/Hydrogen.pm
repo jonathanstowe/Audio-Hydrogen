@@ -44,7 +44,7 @@ path to the C<data-paths> attribute before search for the drumkits.
 use Audio::Hydrogen::Drumkit;
 use Audio::Hydrogen::Song;
 
-class Audio::Hydrogen:ver<0.0.4>:auth<github:jonathanstowe>:api<1.0> {
+class Audio::Hydrogen:ver<0.0.5>:auth<github:jonathanstowe>:api<1.0> {
 
     class DrumkitInfo {
         has Str $.name;
@@ -83,4 +83,4 @@ class Audio::Hydrogen:ver<0.0.4>:auth<github:jonathanstowe>:api<1.0> {
         @!drumkits;
     }
 }
-# vim: expandtab shiftwidth=4 ft=perl6
+# vim: expandtab shiftwidth=4 ft=raku

@@ -12,7 +12,7 @@ A Pattern comprises a set of notes each associated with
 a specific instrument arranged over time. The unit of
 "time" or position is 48 parts per quarter note (MIDI
 uses 24 for MIDI clock, some hardware sequencers may
-do 96 or even higher,) thus a "bar" with the 4/4 
+do 96 or even higher,) thus a "bar" with the 4/4
 time signature has a length of 192 possible positions.
 
 =head1 METHODS
@@ -32,7 +32,7 @@ a list.
 =head2 attribute size
 
 This is a positive Int which is the length of the pattern, this
-is based on 48 per quarter note (so 1/192 of a note is the 
+is based on 48 per quarter note (so 1/192 of a note is the
 minimum resolution.) The default is 192 which would represent
 a single bar at the 4/4 time signature.
 
@@ -89,7 +89,7 @@ An Int pitch factor for pitched instruments, it defaults to 0.
 =head3 attribute note
 
 This is the note that would be played for a pitched instrument
-it defaults to 'C'. 
+it defaults to 'C'.
 
 =head3 attribute length
 
@@ -124,4 +124,4 @@ class Audio::Hydrogen::Pattern does XML::Class[xml-element => 'pattern'] {
 
     has Note @.note-list     is xml-container('noteList');
 }
-# vim: expandtab shiftwidth=4 ft=perl6
+# vim: expandtab shiftwidth=4 ft=raku

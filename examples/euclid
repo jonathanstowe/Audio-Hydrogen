@@ -1,4 +1,4 @@
-#!perl6
+#!raku
 
 use v6;
 
@@ -30,7 +30,7 @@ option,) the total number of C<slots> and the number of C<fills> (the explanatio
 of these is in the paper linked above,) So for instance something like a Samba
 on the cowbell (instrument 15,) of a TR808909 kit I have, one might do:
 
-    perl6 -Ilib examples/euclid --kit=TR808909 --part=15,16,7
+    raku -Ilib examples/euclid --kit=TR808909 --part=15,16,7
 
 You can specify as many parts as your kit has instruments (which is typically
 a maximum of 32.)
@@ -177,4 +177,4 @@ multi MAIN(Str :$kit!, Int:D :$bars = 1, Str :$file, :$part ) {
     }
 }
 
-# vim: expandtab shiftwidth=4 ft=perl6
+# vim: expandtab shiftwidth=4 ft=raku

@@ -8,7 +8,7 @@ Audio::Hydrogen::Drumkit - representation of a drumkit
 
 =head1 DESCRIPTION
 
-This provides an abstraction of the data found in a 
+This provides an abstraction of the data found in a
 C<drumkit.xml> file that describes a hydrogen drumkit.
 
 You can load the XML file with the C<from-xml> method
@@ -36,7 +36,7 @@ A free text description of the drumkit.  It is not required.
 This is a list of L<Audio::Hydrogen::Instrument> objects,
 hydrogen supports 32 instruments and any more than this
 may not be shown in the interface.  If the C<drumkit.xml>
-was created by Hydrogen then it may have exactly 32 
+was created by Hydrogen then it may have exactly 32
 items in the list, any un-used ones won't have a name.
 
 If you are adding to the list or creating a new drumkit
@@ -76,4 +76,4 @@ class Audio::Hydrogen::Drumkit does XML::Class[xml-element => 'drumkit_info'] {
 }
 
 
-# vim: expandtab shiftwidth=4 ft=perl6
+# vim: expandtab shiftwidth=4 ft=raku
