@@ -10,11 +10,11 @@
   ],
   "license": "Artistic-2.0",
   "provides": {
-    "Audio::Hydrogen::Instrument": "lib/Audio/Hydrogen/Instrument.pm",
-    "Audio::Hydrogen::Song": "lib/Audio/Hydrogen/Song.pm",
-    "Audio::Hydrogen": "lib/Audio/Hydrogen.pm",
-    "Audio::Hydrogen::Drumkit": "lib/Audio/Hydrogen/Drumkit.pm",
-    "Audio::Hydrogen::Pattern": "lib/Audio/Hydrogen/Pattern.pm"
+    "Audio::Hydrogen::Instrument": "lib/Audio/Hydrogen/Instrument.rakumod",
+    "Audio::Hydrogen::Song": "lib/Audio/Hydrogen/Song.rakumod",
+    "Audio::Hydrogen": "lib/Audio/Hydrogen.rakumod",
+    "Audio::Hydrogen::Drumkit": "lib/Audio/Hydrogen/Drumkit.rakumod",
+    "Audio::Hydrogen::Pattern": "lib/Audio/Hydrogen/Pattern.rakumod"
   },
   "name": "Audio::Hydrogen",
   "support": {
@@ -27,7 +27,7 @@
   "test-depends": [
     "Test"
   ],
-  "version": "0.0.6",
+  "version": "0.0.7",
   "meta-version": "1",
   "auth": "zef:jonathanstowe",
   "tags": [

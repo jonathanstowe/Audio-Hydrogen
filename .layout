@@ -70,26 +70,26 @@
           "children": [
             {
               "type": "file",
-              "name": "Hydrogen.pm"
+              "name": "Hydrogen.rakumod"
             },
             {
               "purpose": null,
               "name": "Hydrogen",
               "children": [
                 {
-                  "name": "Instrument.pm",
+                  "name": "Instrument.rakumod",
                   "type": "file"
                 },
                 {
-                  "name": "Pattern.pm",
+                  "name": "Pattern.rakumod",
                   "type": "file"
                 },
                 {
-                  "name": "Drumkit.pm",
+                  "name": "Drumkit.rakumod",
                   "type": "file"
                 },
                 {
-                  "name": "Song.pm",
+                  "name": "Song.rakumod",
                   "type": "file"
                 }
               ],
